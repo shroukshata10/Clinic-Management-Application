@@ -1,0 +1,30 @@
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\bin\Debug\Receptionist.exe.config
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\bin\Debug\Receptionist.exe
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\bin\Debug\Receptionist.pdb
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.csprojAssemblyReference.cache
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Properties.Resources.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.csproj.GenerateResource.cache
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.csproj.CoreCompileInputs.cache
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.exe
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.pdb
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Doc_Info.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Medicine.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Doc_Available.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Main_Menu.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Appointments.resources
+C:\Users\Vero\Source\Repos\Receptionist\Receptionist\obj\Debug\Receptionist.Slots.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\bin\Debug\Receptionist.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\bin\Debug\Receptionist.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\bin\Debug\Receptionist.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.csprojAssemblyReference.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Doc_Info.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Medicine.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Doc_Available.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Main_Menu.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Appointments.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Slots.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.Properties.Resources.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.csproj.GenerateResource.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.csproj.CoreCompileInputs.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\Beta\Receptionsit\Receptionist\Receptionist\obj\Debug\Receptionist.pdb

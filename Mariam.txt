@@ -1,0 +1,370 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE CountPatients
+@DR_UserName VARCHAR(50)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT COUNT(Patient_UserName) FROM Appointment WHERE DR_UserName=@DR_UserName;
+END
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE EnterComment
+@Appointment_ID INT,
+@Comments VARCHAR(200)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	UPDATE Appointment SET Comments=@Comments WHERE Appointment_ID=@Appointment_ID;
+
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE EnterDiagnosis
+@Scientific_Name VARCHAR(20)
+
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	INSERT INTO Disease_Diagnosis(Scientific_Name) Values(@Scientific_Name);
+	
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE EnterMedicine
+@Mname VARCHAR(20)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	INSERT INTO  Medicine (Mname) VALUES (@Mname);
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE GetSpecifiedPatient
+@DR_UserName VARCHAR(50),
+@Patient_UserName VARCHAR(50)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT PName,Age,Phone_num,Birth_date,Gender,Date_Time,Day,Start_time,End_time ,A.Appointment_ID, S.Symptoms FROM Patient AS p ,
+	Appointment AS A ,Patient_Symptoms AS S ,Free_Slots AS FS
+	
+	WHERE A.DR_UserName=@DR_UserName AND A.Patient_UserName=@Patient_UserName AND p.PUser_Name=A.Patient_UserName AND S.Patient_UserName=A.Patient_UserName
+	AND A.Appointment_ID=S.Appointment_ID AND FS.Appointment_ID=A.Appointment_ID AND S.Appointment_ID=A.Appointment_ID;
+END
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SetPatientDiagnosis
+@Appointment_ID INT,
+@Diangnosis_Name VARCHAR(20)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	INSERT INTO Patient_Diagnosis Values(@Appointment_ID,@Diangnosis_Name);
+
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SetPatientMedicine
+@Appointment_ID INT,
+@Medicine_Name VARCHAR(20)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	INSERT INTO Patient_Medicine Values(@Appointment_ID,@Medicine_Name);
+
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE UpdateDoctorInfo
+@DName VARCHAR (30),
+@D_Address  VARCHAR(50),
+@Dphone_number char(11),
+@Fees real,
+@Password Varchar(30),
+@DUser_Name  varchar(50),
+@User_name  varchar(50)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Update  Doctor SET DName=@DName , D_Address=@D_Address , Dphone_number=@Dphone_number , Fees =@Fees WHERE DUser_Name=@DUser_Name;
+	Update Account SET Password=@Password WHERE  User_name=@User_name;
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE SelectAssignedClinics
+@DUsername  varchar(50)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT Clinic_name ,Day,Start_time,End_time FROM clinic ,Doctor_Availability WHERE Clinic_ID=ID AND DUsername=@DUsername ;
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE GetMyPatient
+@DR_UserName VARCHAR(50)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT PName,Patient_UserName FROM Patient ,Appointment WHERE DR_UserName=@DR_UserName AND Patient_UserName=PUser_Name;
+END
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE GetAppointmentMedicine
+@Appointment_ID INT
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    
+	SELECT Medicine_Name FROM Patient_Medicine WHERE Appointment_ID=@Appointment_ID;
+END
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE GetAppointmentDiagnosis
+@Appointment_ID INT
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    
+	SELECT Diangnosis_Name FROM Patient_Diagnosis WHERE Appointment_ID=@Appointment_ID;
+END
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+
+CREATE PROCEDURE GetAppointmentComments
+@Appointment_ID INT
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    
+	SELECT Comments FROM Appointment WHERE Appointment_ID=@Appointment_ID;
+END
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+
+CREATE PROCEDURE GetAllDiagnosis
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    
+	SELECT Scientific_Name FROM Disease_Diagnosis ;
+END
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+
+
+
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+
+CREATE PROCEDURE GetAllMedicines
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    
+	SELECT Mname FROM Medicine ;
+END
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE GetDoctorDegree
+@Dr_User_Name VARCHAR(50)
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT Dr_Degree FROM Doctor_Degrees WHERE Dr_User_Name=@Dr_User_Name;
+END

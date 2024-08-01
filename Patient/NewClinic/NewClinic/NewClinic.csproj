@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E806D25-C856-4491-BEE9-87B4B6803CE6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NewClinic</RootNamespace>
+    <AssemblyName>NewClinic</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClinicDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="DBManager.cs" />
+    <Compile Include="DoctorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorInfo.Designer.cs">
+      <DependentUpon>DoctorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalSpecialities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicalSpecialities.Designer.cs">
+      <DependentUpon>MedicalSpecialities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PastAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PastAppointments.Designer.cs">
+      <DependentUpon>PastAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProvidedFunctionalities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvidedFunctionalities.Designer.cs">
+      <DependentUpon>ProvidedFunctionalities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterAnAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterAnAppointment.Designer.cs">
+      <DependentUpon>RegisterAnAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpForm.Designer.cs">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoredProcedures.cs" />
+    <Compile Include="UpcomingAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpcomingAppointments.Designer.cs">
+      <DependentUpon>UpcomingAppointments.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DoctorInfo.resx">
+      <DependentUpon>DoctorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicalSpecialities.resx">
+      <DependentUpon>MedicalSpecialities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PastAppointments.resx">
+      <DependentUpon>PastAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvidedFunctionalities.resx">
+      <DependentUpon>ProvidedFunctionalities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterAnAppointment.resx">
+      <DependentUpon>RegisterAnAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUpForm.resx">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UpcomingAppointments.resx">
+      <DependentUpon>UpcomingAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClinicDataSet.xsc">
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicDataSet.xss">
+      <DependentUpon>ClinicDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet1.xsc">
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicDataSet1.xss">
+      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_113881_digital_health_startups.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-managementt-calendar-method-appointment-planning-business-organizer-people-drawing-mark-work-schedule-cartoon-characters-colleagues-teamwork_335657-420.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BV-Acharya-3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d9de112b2c4aedef6df31d05194adf21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e085579123da87b517d28e5eb7d026ca.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clinic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55567707-modern-dental-practice-dental-chair-and-other-accessories-used-by-dentists-.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5d91fdb36f24eb3da40c3e29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BV-Acharya-31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5d91fdb36f24eb3da40c3e291.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e085579123da87b517d28e5eb7d026ca1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55567707-modern-dental-practice-dental-chair-and-other-accessories-used-by-dentists-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BV-Acharya-32.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BV-Acharya-33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clinic1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clinic2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clinic3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55567707-modern-dental-practice-dental-chair-and-other-accessories-used-by-dentists-2.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

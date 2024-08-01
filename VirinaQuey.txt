@@ -1,0 +1,231 @@
+USE [Clinic]
+GO
+/****** Object:  StoredProcedure [dbo].[ADD_Free_Slot]    Script Date: 6/13/2021 9:02:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ADD_Free_Slot]
+	-- Add the parameters for the stored procedure here
+	@Dr_Name  varchar(50), 
+	@ID int,
+	@Day varchar(50), 
+	@start time,
+	@End time,
+	@clinic int
+
+AS
+BEGIN
+INSERT INTO Free_Slots(Appointment_ID,DUsername,Day,Start_time,End_time,Clinic_ID,Registered)
+Values (@ID,@Dr_Name,@Day,@start,@End,@clinic,'No')
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[ADD_Medicine]    Script Date: 6/13/2021 9:02:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[ADD_Medicine]
+	-- Add the parameters for the stored procedure here
+	@Medicine_name  varchar(50), 
+	@Code int,
+	@Price float
+	
+
+AS
+BEGIN
+INSERT INTO Medicine (Mname, Bar_Code,Price)
+Values (@Medicine_name, @Code, @Price)
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Delete_appointment]    Script Date: 6/13/2021 9:03:07 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[Delete_appointment] 
+@appointment_id int,
+@Patient_name Varchar(50),
+@Dr_Name Varchar(50)
+AS
+BEGIN
+UPDATE Free_Slots
+SET Registered='No'
+WHERE Free_Slots.Appointment_ID=@appointment_id;
+
+DELETE Appointment
+WHERE Appointment.Appointment_ID=@appointment_id AND Appointment.Patient_UserName=@Patient_name AND Appointment.DR_UserName=@Dr_Name ;
+
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[ GetClinic_ID]    Script Date: 6/13/2021 9:01:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ GetClinic_ID] @Doc_User_name varchar(50)
+AS
+BEGIN
+SELECT Clinic_ID
+FROM Doctor_Works_In 
+where Doc_User_name=@Doc_User_name
+END 
+
+GO
+/****** Object:  StoredProcedure [dbo].[register]    Script Date: 6/13/2021 9:03:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[register]
+	@Dr_Name  varchar(50), 
+	@ID int,
+	@Day varchar(50), 
+	@Patient_name varchar(50),
+	@clinic int
+
+AS
+BEGIN
+INSERT INTO Appointment(Appointment_ID,Date_Time,Patient_UserName,Comments,DR_UserName,Clinic_ID)
+Values (@ID,@Day,@Patient_name,'',@Dr_Name,@clinic);
+
+UPDATE Free_Slots
+SET Registered='YES'
+WHERE Free_Slots.Appointment_ID=@ID;
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Search_appointment]    Script Date: 6/13/2021 9:03:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[Search_appointment]
+	-- Add the parameters for the stored procedure here
+	@Patient_name  varchar(50), 
+	@appointment_id int,
+	@Dr_Name varchar(50)
+AS
+BEGIN
+select A.Appointment_ID,A.Date_time,F.Start_time, A.Patient_UserName
+From Appointment A, Free_Slots F
+Where A.Appointment_ID=@appointment_id AND  Patient_UserName=@Patient_name AND DR_UserName=@Dr_Name and F.Appointment_ID=A.Appointment_ID;
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[SelectAppointments]    Script Date: 6/13/2021 9:04:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[SelectAppointments]
+@Dr_Name Varchar(50)
+	AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT Appointment.Appointment_ID , Free_Slots.End_time , Free_Slots.Start_time , Appointment.Patient_UserName  FROM Appointment, Free_Slots
+	Where Appointment.Appointment_ID=Free_Slots.Appointment_ID AND Free_Slots.Registered='Yes' AND Appointment.DR_UserName=@Dr_Name;
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Show_Doctors]    Script Date: 6/13/2021 9:04:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[Show_Doctors]
+
+	AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT DUser_Name, DName, Specialization, Doctor_Works_In.Clinic_ID  FROM Doctor, Doctor_Works_In
+	WHERE Doctor.DUser_Name=Doctor_Works_In.Doc_User_name ;
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Show_Medicine]    Script Date: 6/13/2021 9:05:07 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[Show_Medicine]
+	-- Add the parameters for the stored procedure here
+
+	
+AS
+BEGIN
+select Mname, Bar_code, Price from Medicine
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[Show_Slots]    Script Date: 6/13/2021 9:05:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dbo].[Show_Slots]
+@Dr_Name Varchar(50)
+	-- Add the parameters for the stored procedure here
+
+	
+AS
+BEGIN
+select Appointment_ID, Day, Start_time, End_time, Registered from Free_Slots
+Where Free_Slots.DUsername=@Dr_Name AND Free_Slots.Registered='No';
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[UpdaterRegisteredAppointments]    Script Date: 6/13/2021 9:05:53 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[UpdaterRegisteredAppointments] @Appointment_ID int
+AS
+BEGIN
+UPDATE Free_Slots
+SET Registered='YES'
+WHERE Appointment_ID=@Appointment_ID
+END

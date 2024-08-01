@@ -1,0 +1,373 @@
+Use Clinic
+
+CREATE TABLE Account(
+User_name varchar(50) ,
+Type int Not NULL,  /* 1 for doctor ,2 for rec ,3 for patient*/
+Password Varchar(30) Not NULL ,
+Admin_ID int
+primary key(User_name)
+) 
+
+
+CREATE TABLE Patient(
+PName VARCHAR (30) Not NULL,
+Phone_num char(11) Not NULL,
+P_Address  VARCHAR(50)  ,
+PUser_Name VARCHAR (50),
+Age int Not NULL,
+Birth_date date,
+Gender char(6)   Not NULL,
+PRIMARY KEY(PUser_Name),
+FOREIGN KEY (PUser_Name) REFERENCES Account
+ON DELETE CASCADE
+ON UPDATE CASCADE
+)
+
+Create TABLE Receptionist(
+Name varchar(50)  Not NULL,
+Salary int,
+Phone_num char(11)  Not NULL,
+User_name varchar(50)  DEFAULT 'eslam.ahmed@clinic.com',
+primary key(User_name),
+FOREIGN KEY (User_name) REFERENCES Account
+ON DELETE SET DEFAULT 
+ON UPDATE CASCADE
+)
+
+
+
+CREATE TABLE Doctor(
+DName VARCHAR (30) Not NULL,
+DUser_Name  varchar(50) Not NULL DEFAULT 'mariam.abouzaid@clinic.com', 
+Dphone_number char(11)Not NULL,
+Specialization VARCHAR (20) Not NULL,
+D_Address  VARCHAR(50),
+Fees real   Not NULL,
+PRIMARY KEY(DUser_Name),
+FOREIGN KEY (DUser_Name) REFERENCES Account
+ON DELETE SET DEFAULT 
+ON UPDATE CASCADE
+
+)
+CREATE TABLE Medicine(
+Mname VARCHAR(20) NOT NULL,
+Bar_Code INT ,
+Price INT ,
+PRIMARY KEY(Mname)
+)
+
+
+CREATE TABLE Disease_Diagnosis
+(
+Scientific_Name VARCHAR(20) ,
+PRIMARY KEY (Scientific_Name),
+)
+CREATE TABLE clinic(
+ID INT NOT NULL primary key,
+Phone_number VARCHAR(15),
+Clinic_name VARCHAR(50),
+City VARCHAR(25),
+Governorate VARCHAR(50),
+Street VARCHAR(50),
+Zip_Code VARCHAR(50)
+)
+
+CREATE TABLE Appointment
+(
+Date_Time DATE ,
+Appointment_ID INT,
+Comments VARCHAR(200),
+DR_UserName VARCHAR(50) Default 'default',
+Patient_UserName VARCHAR(50) Default 'default',
+Clinic_ID int Default 1,
+
+PRIMARY KEY (Appointment_ID),
+FOREIGN KEY (DR_UserName) REFERENCES Doctor
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+FOREIGN KEY (Patient_UserName) REFERENCES Patient
+ON DELETE  SET DEFAULT
+ON UPDATE SET DEFAULT,
+FOREIGN KEY (Clinic_ID ) REFERENCES clinic
+ON DELETE  SET DEFAULT
+ON UPDATE SET DEFAULT,
+)
+Create TABLE Patient_Diagnosis(
+Appointment_ID INT,
+Diangnosis_Name VARCHAR(20),
+primary key(Appointment_ID,Diangnosis_Name),
+FOREIGN KEY (Diangnosis_Name) REFERENCES Disease_Diagnosis
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+FOREIGN KEY (Appointment_ID) REFERENCES Appointment
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+)
+
+
+Create TABLE Patient_Medicine(
+Appointment_ID INT,
+Medicine_Name VARCHAR(20),
+PRIMARY KEY(Appointment_ID,Medicine_Name),
+FOREIGN KEY (Medicine_Name) REFERENCES Medicine
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+FOREIGN KEY (Appointment_ID) REFERENCES Appointment
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+)
+
+
+CREATE TABLE Doctor_Degrees
+(
+Dr_User_Name varchar(50),
+Dr_Degree varchar(50),
+PRIMARY KEY (Dr_User_Name,Dr_Degree),
+FOREIGN KEY (Dr_User_Name) REFERENCES Doctor
+ON DELETE CASCADE
+ON UPDATE CASCADE
+)
+
+
+
+
+
+
+CREATE TABLE Doctor_Works_In(
+Doc_User_name varchar(50),
+Clinic_ID INT DEFAULT 1,
+Primary key(Doc_User_name,Clinic_ID),
+FOREIGN KEY (Clinic_ID )REFERENCES clinic
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+FOREIGN KEY (Doc_User_name )REFERENCES Doctor
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+)
+CREATE TABLE Patient_Symptoms
+(
+Appointment_ID INT,
+Symptoms VARCHAR(100),
+Patient_UserName VARCHAR(50),
+PRIMARY KEY (Appointment_ID,Patient_UserName,Symptoms),
+FOREIGN KEY (Patient_UserName) REFERENCES Patient
+ON DELETE  NO ACTION
+ON UPDATE NO ACTION,
+FOREIGN KEY (Appointment_ID) REFERENCES Appointment
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+)
+
+
+
+CREATE TABLE Receptionist_Works_In(
+Rec_User_name varchar(50) DEFAULT 'eslam.ahmed@clinic.com',
+Clinic_ID INT Not NULL DEFAULT 1,
+Primary key(Rec_User_name,Clinic_ID),
+FOREIGN KEY (Clinic_ID ) REFERENCES clinic
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+FOREIGN KEY (Rec_User_name )REFERENCES Receptionist
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+)
+
+
+
+CREATE TABLE Doctor_Availability(
+DUsername varchar(50),
+Clinic_ID Int ,
+Day varchar(20),
+Start_time Time,
+End_time Time,
+Primary Key(DUsername,Clinic_ID,Day,Start_time,End_time),
+FOREIGN KEY (Clinic_ID ) REFERENCES clinic
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+FOREIGN KEY (DUsername )REFERENCES Doctor
+ON DELETE CASCADE
+ON UPDATE CASCADE
+)
+
+CREATE TABLE Free_Slots(
+Appointment_ID Int,
+Registered varchar(3),
+DUsername varchar(50),
+Day varchar(20),
+Start_time Time,
+End_time Time,
+Clinic_ID Int ,
+Primary Key(Appointment_ID),
+FOREIGN KEY (Clinic_ID ) REFERENCES clinic
+ON DELETE SET NULL
+ON UPDATE CASCADE,
+FOREIGN KEY (DUsername )REFERENCES Doctor
+ON DELETE CASCADE
+ON UPDATE CASCADE)
+
+
+
+INSERT INTO Account VALUES ('ahmed.saied@clinic.com',3,'1234',1);
+INSERT INTO Account VALUES ('nada.ahmed@clinic.com',3,'1256',1);
+INSERT INTO Account VALUES ('sara.mohamed@clinic.com',3,'97jk',1);
+INSERT INTO Account VALUES ('mariam.osama@clinic.com',3,'df43',1);
+INSERT INTO Account VALUES ('abdullah.saad@clinic.com',3,'abd011',1);
+INSERT INTO Account VALUES ('shroukmohamed@clinic.com',1,'ss565',1);
+INSERT INTO Account VALUES ('salmaAhmed@clinic.com',1,'ss345',1);
+INSERT INTO Account VALUES ('AhmedMohamed@clinic.com',1,'34er',1);
+INSERT INTO Account VALUES ('AbdallahAhmed@clinic.com',1,'aa345r',1);
+INSERT INTO Account VALUES ('AhmedYousry@clinic.com',1,'jhgfd',1);
+INSERT INTO Account VALUES ('Anas_Ramzy@clinic.com',3,'345fd',1);
+INSERT INTO Account VALUES ('Hady Ayman@clinic.com',3,'34dfg',1);
+INSERT INTO Account VALUES ('Maihemdan@clinic.com',3,'mai432',1);
+INSERT INTO Account VALUES ('Maya_Ehab@clinic.com',3,'maya54376',1);
+INSERT INTO Account VALUES ('EsraaAhmed@clinic.com',2,'maya54376',1);
+INSERT INTO Account VALUES ('TokaAhmed@clinic.com',2,'maya54376',1);
+INSERT INTO Account VALUES ('mariam.tawfik@clinic.com',1,'zxcv',1);
+INSERT INTO Account VALUES ('vero.ehab@clinic.com',3,'zxcv',1);
+INSERT INTO Account VALUES ('rodina.kamal@clinic.com',3,'zxcv',1);
+INSERT INTO Account VALUES ('Hady Ayman@clinic.com',3,'zxcv',1);
+INSERT INTO Account VALUES ('shrouk.Shata@clinic.com',3,'zxcv',1);
+INSERT INTO Account VALUES ('ahmed.sleem@clinic.com',3,'zxcv',1);
+INSERT INTO Account VALUES ('mahmoud_khaled@clinic.com',3,'zxcv',1);
+
+INSERT INTO Account VALUES ('Admin@clinic.com',4,'1234',1);
+INSERT INTO Account VALUES ('Admin2@clinic.com',4,'zxcv',1);
+
+
+
+
+insert into Patient values('mariam tawfik',012457896532,'Cairo,Zayed','mariam.tawfik@clinic.com',30,'1982-11-06','Female')
+insert into Patient values('vero ehab',01245879356,'Cairo,MisrElgedida','vero.ehab@clinic.com',26,'2004-01-03','Female')
+insert into Patient values('rodina kamal',01245879356,'Cairo,MisrElgedida','rodina.kamal@clinic.com',26,'1999-01-03','Female')
+insert into Patient values('Hady Ayman',01256796575,'Alexandria','Hady Ayman@clinic.com',33,'1987-02-11','Male')
+insert into Patient values('shrouk Shata',01235856865,'Cairo,October','shrouk.Shata@clinic.com',33,'1998-01-01','Female')
+insert into Patient values('ahmed sleem',01147895623,'Mansora','ahmed.sleem@clinic.com',20,'2000-01-01','Male')
+insert into Patient values('mahmoud khaled',01147895623,'Mansora','mahmoud_khaled@clinic.com',20,'2015-01-01','Male')
+
+
+
+insert into Patient values('Karim fahmy',012457896532,'Giza','Karimfahmy@clinic.com',29,'1988-01-05','Male')
+insert into Patient values('Anas Ramzy',01245879356,'Cairo,MisrElgedida','Anas_Ramzy@clinic.com',26,'2004-01-03','Male')
+
+insert into Patient values('Mai hemdan',01235856865,'October','Maihemdan@clinic.com',33,'2003-01-01','Female')
+insert into Patient values('Maya Ehab',01147895623,'Mansora','Maya_Ehab@clinic.com',20,'2015-01-01','Female')
+
+
+insert into clinic Values (1,'01159887679','Elhoda','Zayed','Giza','horya','0000');
+
+insert into Doctor values('Mariam Tawfik Abouzaid','mariam.tawfik@clinic.com','01148759507','Eyes','4,44,horya street,giza',500);
+
+insert into clinic values(112,'01145634576','Elrabwa','Giza','Mansours','Elzhoor','3454');
+
+
+
+
+INSERT INTO Doctor
+VALUES ('Shrouk Shata', 'shroukmohamed@clinic.com','01033448493', 'Eyes', 'Cairo', 10325)
+INSERT INTO Doctor
+VALUES ('Salma Ahmed', 'salmaAhmed@clinic.com', '0109857963', 'Dentistry', 'Giza', 13525)
+INSERT INTO Doctor
+VALUES ('Ahmed Mohamed', 'AhmedMohamed@clinic.com', '0105247935', 'Heat', 'El Obour', 13963)
+INSERT INTO Doctor
+VALUES ('Abdallah Ahmed', 'AbdallahAhmed@clinic.com','0106542392', 'Eyes', 'Giza', 13963)
+INSERT INTO Doctor
+VALUES ('Ahmed Yousry', 'AhmedYousry@clinic.com','0103214596', 'Dentistry', 'Cairo', 13659)
+
+
+
+INSERT INTO Receptionist VALUES('Esraa Ahmed',2300,01033656552,'EsraaAhmed@clinic.com')
+INSERT INTO Receptionist VALUES ('Toka Ahmed',2600,010336551269,'TokaAhmed@clinic.com')
+
+
+
+INSERT INTO Doctor_Works_In VALUES('AbdallahAhmed@clinic.com',12543)
+INSERT INTO Doctor_Works_In VALUES('salmaAhmed@clinic.com',11345)
+
+INSERT INTO clinic  VALUES(12543,'01148563465','Elamal','maadi','Cairo','zewail',123432);
+INSERT INTO clinic  VALUES(98754,'01148763465','Elmostaqbal','october','Giza','zhoor',98785);
+INSERT INTO clinic  VALUES(65743,'01148987465','Elnoor','dara','Cairo','ahmed abbas',23574);
+INSERT INTO clinic  VALUES(11345,'01146666465','Elhoda','embaba','Cairo','ahmed helmy',25487);
+INSERT INTO clinic  VALUES(98758,'01148563498','Elnadi','masr elgedida','elmonfia','elghobashy',98758);
+
+INSERT INTO Doctor_Degrees values ('mariam.tawfik@clinic.com','phd')
+insert into Doctor_Degrees  values ('mariam.tawfik@clinic.com','Master')
+insert into Doctor_Degrees   values('mariam.tawfik@clinic.com','Bachelor of Medicine')
+
+insert into Medicine  values ('Ketofan',1236577,50)
+
+insert into Medicine  values('Congestal',1254889,60)
+
+insert into Patient_Medicine  values(1,'ketofan')
+insert into Patient_Medicine values (2,'Congestal')
+
+
+
+
+
+
+INSERT INTO Appointment VALUES('2021-02-12',1,NULL,'sara.mohamed@clinic.com','salmaAhmed@clinic.com',12543)
+INSERT INTO Appointment VALUES('2021-03-12',2,NULL, 'nada.ahmed@clinic.com','AbdallahAhmed@clinic.com',12543)
+INSERT INTO Appointment VALUES('2021-03-14',3,NULL, 'mariam.osama@clinic.com','salmaAhmed@clinic.com', 98754)
+INSERT INTO Appointment VALUES('2021-03-16',4,NULL, 'ahmed.saied@clinic.com','salmaAhmed@clinic.com', 98754)
+
+Insert into Free_Slots values(1,'YES','sara.mohamed@clinic.com','Wednesday','06:00:00.0000000','07:00:00.0000000',12543)
+Insert into Free_Slots values(2,'YES','nada.ahmed@clinic.com','Tuesday','07:00:00.0000000','08:00:00.0000000',12543)
+Insert into Free_Slots values(3,'YES','mariam.osama@clinic.com','Monday','05:00:00.0000000','06:00:00.0000000', 98754)
+Insert into Free_Slots values(4,'YES','ahmed.saied@clinic.com','Sunday','07:00:00.0000000','08:00:00.0000000', 98754)
+Insert into Free_Slots values(5,'NO','mariam.osama@clinic.com','Friday','05:00:00.0000000','06:00:00.0000000', 98754)
+Insert into Free_Slots values(6,'NO','ahmed.saied@clinic.com','Saturday','07:00:00.0000000','08:00:00.0000000', 98754)
+
+
+
+
+INSERT INTO Doctor_Availability VALUES('salmaAhmed@clinic.com',12543,'Sunday','12:00','04:00')
+INSERT INTO Doctor_Availability VALUES('salmaAhmed@clinic.com',12543,'Monday','12:00','08:00')
+INSERT INTO Doctor_Availability VALUES('salmaAhmed@clinic.com',12543,'Friday','09:00','04:00')
+INSERT INTO Doctor_Availability VALUES('shroukmohamed@clinic.com',12543,'Tuesday','09:00','08:00')
+INSERT INTO Doctor_Availability VALUES('shroukmohamed@clinic.com',12543,'Saturday','09:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AhmedMohamed@clinic.com',12543,'Sunday','05:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AhmedMohamed@clinic.com',12543,'Wednesday','06:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AbdallahAhmed@clinic.com',12543,'Monday','04:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AbdallahAhmed@clinic.com',12543,'Wednesday','06:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AhmedYousry@clinic.com',65743,'Monday','06:00','09:00')
+INSERT INTO Doctor_Availability VALUES('AhmedYousry@clinic.com',98758,'Teusday','06:00','09:00')
+
+
+insert into Patient_Symptoms values (1,'cough','sara.mohamed@clinic.com')
+insert into Patient_Symptoms values(1,'Headache','sara.mohamed@clinic.com')
+
+insert into Patient_Symptoms values (2,'flu','nada.ahmed@clinic.com')
+insert into Patient_Symptoms values(2,'sneezing','nada.ahmed@clinic.com')
+
+
+
+
+
+
+
+
+INSERT INTO Disease_Diagnosis  VALUes('Cataracts');
+INSERT INTO Disease_Diagnosis  VALUes('Arthritis');
+INSERT INTO Disease_Diagnosis  VALUes('Cholesterol');
+INSERT INTO Disease_Diagnosis  VALUes('Parkinson’s Disease');
+INSERT INTO Disease_Diagnosis  VALUes('Diabetes');
+INSERT INTO Disease_Diagnosis  VALUes('Osteoarthritis');
+INSERT INTO Disease_Diagnosis  VALUes('HIV/AIDS');
+INSERT INTO Disease_Diagnosis  VALUes('Influenza');
+INSERT INTO Disease_Diagnosis  VALUes('Leukemia');
+
+INSERT INTO Patient_Diagnosis VALUES (1,'Cataracts');
+INSERT INTO Patient_Diagnosis VALUES (1,'Arthritis');
+INSERT INTO Patient_Diagnosis VALUES (1,'Diabetes');
+INSERT INTO Patient_Diagnosis VALUES (2,'HIV/AIDS');
+INSERT INTO Patient_Diagnosis VALUES (2,'Influenza');
+INSERT INTO Patient_Diagnosis VALUES (2,'Leukemia');
+INSERT INTO Patient_Diagnosis VALUES (3,'HIV/AIDS');
+INSERT INTO Patient_Diagnosis VALUES (3,'Diabetes');
+INSERT INTO Patient_Diagnosis VALUES (3,'Leukemia');
+INSERT INTO Patient_Diagnosis VALUES (4,'Parkinson’s Disease');
+INSERT INTO Patient_Diagnosis VALUES (4,'Influenza');
+
+INSERT INTO Patient_Medicine VALUES (1,'paramol');
+INSERT INTO Patient_Medicine VALUES (1,'congestal');

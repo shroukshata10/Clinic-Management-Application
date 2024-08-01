@@ -1,0 +1,102 @@
+C:\Users\hp 840\source\repos\ClinicGUI\bin\Debug\ClinicGUI.exe.config
+C:\Users\hp 840\source\repos\ClinicGUI\bin\Debug\ClinicGUI.exe
+C:\Users\hp 840\source\repos\ClinicGUI\bin\Debug\ClinicGUI.pdb
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.csprojAssemblyReference.cache
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.Form1.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.Properties.Resources.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.SignInForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.csproj.GenerateResource.cache
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.csproj.CoreCompileInputs.cache
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.exe
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.pdb
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.SignUpForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.DoctorMainForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.DoctorPerInfoForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.DiagnosisForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.MedicineForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.UpcomingAppointmentsForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.PatientInformationForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.ViewAssignedPatientsForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.AssignedClinicsForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.UpdateInfoForm.resources
+C:\Users\hp 840\source\repos\ClinicGUI\obj\Debug\ClinicGUI.EnterAppointmentInfo.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\ClinicGUI.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\ClinicGUI.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\ClinicGUI.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\NewClinic.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\NewClinic.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\NewClinic.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.csprojAssemblyReference.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.AssignedClinicsForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.DiagnosisForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.DoctorMainForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.DoctorPerInfoForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.EnterAppointmentInfo.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.MedicineForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.PatientInformationForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.Properties.Resources.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.SignInForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.UpcomingAppointmentsForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.UpdateInfoForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.ViewAssignedPatientsForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.csproj.GenerateResource.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.csproj.CoreCompileInputs.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.csproj.CopyComplete
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\obj\Debug\ClinicGUI.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\Admin_Interface.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\Admin_Interface.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\ClinicGUI\bin\Debug\Admin_Interface.exe.config
+D:\Final Project\ClinicGUI\bin\Debug\ClinicGUI.exe.config
+D:\Final Project\ClinicGUI\bin\Debug\ClinicGUI.exe
+D:\Final Project\ClinicGUI\bin\Debug\ClinicGUI.pdb
+D:\Final Project\ClinicGUI\bin\Debug\NewClinic.exe
+D:\Final Project\ClinicGUI\bin\Debug\NewClinic.pdb
+D:\Final Project\ClinicGUI\bin\Debug\NewClinic.exe.config
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.csprojAssemblyReference.cache
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.AssignedClinicsForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.DiagnosisForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.DoctorMainForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.DoctorPerInfoForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.EnterAppointmentInfo.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.MedicineForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.PatientInformationForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.Properties.Resources.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.SignInForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.UpcomingAppointmentsForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.UpdateInfoForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.ViewAssignedPatientsForm.resources
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.csproj.GenerateResource.cache
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.csproj.CoreCompileInputs.cache
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.csproj.CopyComplete
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.exe
+D:\Final Project\ClinicGUI\obj\Debug\ClinicGUI.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.csprojAssemblyReference.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.AssignedClinicsForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.DiagnosisForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.DoctorMainForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.DoctorPerInfoForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.EnterAppointmentInfo.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.MedicineForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.PatientInformationForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.Properties.Resources.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.SignInForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.UpdateInfoForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.ViewAssignedPatientsForm.resources
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.csproj.GenerateResource.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.csproj.CoreCompileInputs.cache
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\ClinicGUI.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\ClinicGUI.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\ClinicGUI.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Admin_Interface.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\NewClinic.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Admin_Interface.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Admin_Interface.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\NewClinic.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\NewClinic.exe.config
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\obj\Debug\ClinicGUI.csproj.CopyComplete
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Receptionist.exe
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Receptionist.pdb
+D:\CIE-Year2-Spring\CIE 206-DataBase\finaaal\Final Project version 2\ClinicGUI\bin\Debug\Receptionist.exe.config

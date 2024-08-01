@@ -1,0 +1,267 @@
+GO
+CREATE PROCEDURE AddNewAdmin
+-- Add the parameters for the stored procedure here
+@UserName Varchar(50),
+@Password Varchar(50)
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+INSERT INTO Account(User_name,Type,Password,Admin_ID)
+VALUES (@UserName,'4',@Password,'1')
+END
+
+GO
+CREATE PROCEDURE CheckClinic_Doctor
+-- Add the parameters for the stored procedure here
+@ClinicID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT Clinic_ID FROM Doctor_Works_In
+WHERE Clinic_ID = @ClinicID
+END
+
+GO
+CREATE PROCEDURE CheckClinic_RECEPTIONIST
+-- Add the parameters for the stored procedure here
+@ClinicID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT Clinic_ID FROM Doctor_Works_In
+WHERE Clinic_ID = @ClinicID
+END
+
+--===================================================================
+GO
+CREATE PROCEDURE DeleteDoctor
+-- Add the parameters for the stored procedure here
+@UserName varchar(50)
+AS
+BEGIN
+-- Insert statements for procedure here
+DELETE FROM Doctor
+WHERE DUser_Name = @UserName
+DELETE FROM Doctor_Works_In
+WHERE Doc_User_name = @UserName;
+delete from Doctor_Degrees
+where Dr_User_Name = @UserName;
+END
+
+GO
+CREATE PROCEDURE DeleteReceptionist
+@RUser_Name VARCHAR(50)
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+-- Insert statements for procedure here
+DELETE FROM Receptionist
+WHERE User_Name=@RUser_Name;
+DELETE FROM Receptionist_Works_In
+WHERE @RUser_Name = Rec_User_name;
+
+END
+
+--====================================================================
+
+GO
+CREATE PROCEDURE CheckClinic
+-- Add the parameters for the stored procedure here
+@ClinicID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT ID FROM clinic
+WHERE ID = @ClinicID
+END
+
+GO
+CREATE PROCEDURE CheckDoctorUserName
+-- Add the parameters for the stored procedure here
+@DUserName VARCHAR(50),
+@ClinicID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT Count(*) FROM Doctor_Works_In
+WHERE Doc_User_name = @DUserName AND Clinic_ID = @ClinicID
+END
+
+--==============================================================
+GO
+CREATE PROCEDURE CheckRecepUserName
+-- Add the parameters for the stored procedure here
+@RUserName VARCHAR(50),
+@ClinicID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT Count(*) FROM Receptionist_Works_In
+WHERE Rec_User_name = @RUserName AND Clinic_ID = @ClinicID
+END
+
+GO
+CREATE PROCEDURE InsertClinic
+-- Add the parameters for the stored procedure here
+@ID INT,
+@Phone_number VARCHAR(15),
+@Clinic_name VARCHAR(50),
+@City VARCHAR(25),
+@Governorate VARCHAR(50),
+@Street VARCHAR(50),
+@Zip_Code VARCHAR(50)
+AS
+BEGIN
+INSERT INTO clinic(ID, Phone_number, Clinic_name, City, Governorate, Street, Zip_Code)
+Values (@ID, @Phone_number, @Clinic_name, @City, @Governorate, @Street, @Zip_Code)
+END
+
+--======================================================================
+GO
+CREATE PROCEDURE InsertDoctor
+@ClinicID int,
+@DFName VARCHAR (30),
+@DUser_Name VARCHAR(50),
+@DPassword VARCHAR(50),
+@DBirthDate date,
+@DGender VARCHAR (30),
+@Dphone_number char(11),
+@Specialization VARCHAR (20),
+@DAddress VARCHAR(50),
+@Fees real,
+@Degree varchar(50)
+AS
+BEGIN
+INSERT INTO Account(User_name,Type,Password,Admin_ID)
+VALUES (@DUser_Name,'1',@DPassword,'1')
+INSERT INTO Doctor(DName, DUser_Name, Dphone_number, Specialization, D_Address,
+Fees)
+Values (@DFName, @DUser_Name, @Dphone_number,@Specialization,@DAddress,@Fees)
+INSERT INTO Doctor_Degrees VALUES(@DUser_Name,@Degree)
+INSERT INTO Doctor_Works_In(Doc_User_name ,Clinic_ID)
+VALUES (@DUser_Name,@ClinicID)
+END
+
+GO
+CREATE PROCEDURE InsertReceptionist
+@Clinic_ID int,
+@RFName varchar(50),
+@RUser_Name VARCHAR(50),
+@RPassword varchar(50),
+@RBirthDate date,
+@RGender VARCHAR(50),
+@RPhone_num CHAR(11),
+@RSalary int
+AS
+BEGIN
+INSERT INTO Account(User_name,Type,Password,Admin_ID)
+VALUES (@RUser_Name,'2',@RPassword,'1')
+INSERT INTO Receptionist
+Values (@RFName, @RSalary,@RPhone_num, @RUser_Name);
+INSERT INTO Receptionist_Works_In(Rec_User_name,Clinic_ID)
+VALUES (@RUser_Name,@Clinic_ID)
+END
+--=======================================================================
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE selectClinic
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT * FROM clinic;
+END
+
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SelectDoctors
+@Clinic_ID int
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT * FROM Doctor, Doctor_Works_In
+WHERE Doc_User_name = DUser_Name AND Clinic_ID = @Clinic_ID
+END
+
+--===================================================================
+
+GO
+CREATE PROCEDURE SelectIDCombobox
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT ID FROM clinic;
+END
+
+GO
+CREATE PROCEDURE SelectReceptionist
+@Clinic_ID int
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Insert statements for procedure here
+SELECT * FROM Receptionist, Receptionist_Works_In
+WHERE User_Name = Rec_User_name AND Clinic_ID = @Clinic_ID
+END
+
+--=======================================================================
+
+GO
+CREATE PROCEDURE UPDATEDoctor
+@UserName VARCHAR(50),
+@Fees real
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+
+-- Insert statements for procedure here
+UPDATE Doctor
+SET Fees = @Fees
+WHERE DUser_Name = @UserName;
+END
+
+GO
+CREATE PROCEDURE UpdateReceptionist
+@RUserName Varchar(50),
+@Salary int
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+-- Insert statements for procedure here
+UPDATE Receptionist
+SET Salary = @Salary
+WHERE User_Name = @RUserName
+END

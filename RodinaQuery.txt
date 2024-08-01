@@ -1,0 +1,240 @@
+CREATE PROCEDURE [dbo].[insertPatient]
+-- Add the parameters for the stored procedure here
+@PName varchar(50),
+@Phone_num char(11),
+@P_Address varchar(50),
+@PUser_Name  varchar(50),
+@Age int,
+@Birth_date date,
+@Gender char(6)
+
+AS
+BEGIN
+INSERT INTO Patient(PName ,Phone_num,P_Address,PUser_Name,Age,Birth_date,Gender)
+Values (@PName ,@Phone_num,@P_Address,@PUser_Name,@Age,@Birth_date,@Gender)
+END
+GO
+
+CREATE PROCEDURE [dbo].[insert_Account]
+@User_name varchar(50) ,
+      @Type int,
+      @Password Varchar(30) ,
+      @Admin_ID int	 
+AS
+BEGIN
+INSERT INTO Account(User_name,Type,Password,Admin_ID)
+Values (@User_name, @Type,@Password,@Admin_ID)
+END
+GO
+
+CREATE PROCEDURE [dbo].[getDoctorInfo] @DUser_Name varchar(50)
+AS
+BEGIN
+SELECT DName, Fees
+From Doctor
+where DUser_Name= @DUser_Name
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[getClinicInfo] @ID int
+AS
+BEGIN
+SELECT Clinic_name,City,Governorate,Street,Zip_Code
+From clinic
+where ID= @ID
+END
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[GetClinic_ID] @Doc_User_name varchar(50)
+AS
+BEGIN
+SELECT Clinic_ID
+FROM Doctor_Works_In 
+where Doc_User_name=@Doc_User_name
+END 
+GO
+CREATE PROCEDURE [dbo].[Get_Doctor_Degree] @Dr_User_Name varchar(50)
+AS
+BEGIN
+SELECT Dr_Degree
+FROM Doctor_Degrees
+where Dr_User_Name =@Dr_User_Name
+END
+GO
+
+CREATE PROCEDURE[dbo].[GetanAppointment] 
+AS
+BEGIN
+SELECT Day,Start_time,Appointment_ID
+FROM Free_Slots
+WHERE Registered='NO'
+END
+GO
+CREATE PROCEDURE [dbo].[Insert_Patient_symptoms]
+@Appointment_ID int,
+  @Symptoms varchar(100),
+  @Patient_UserName varchar(50)
+AS
+BEGIN
+INSERT INTO Patient_Symptoms(Appointment_ID,Symptoms,Patient_UserName)
+Values (@Appointment_ID,@Symptoms, @Patient_UserName)
+END
+GO
+
+CREATE PROCEDURE [dbo].[UpdaterRegisteredAppointments] @Appointment_ID int
+AS
+BEGIN
+UPDATE Free_Slots
+SET Registered='YES'
+WHERE Appointment_ID=@Appointment_ID
+END
+GO
+
+CREATE PROCEDURE [dbo].[GetRegisteredAppointmentInfo] @Appointment_ID int
+AS
+BEGIN
+select *
+from Free_Slots
+WHERE Appointment_ID=@Appointment_ID
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[PutSlotInAppointmentTable]
+
+ @Appointment_ID int,
+ @DR_UserName VARCHAR(50),
+@Patient_UserName VARCHAR(50),
+@Clinic_ID int
+AS
+BEGIN
+INSERT INTO  Appointment (Appointment_ID,DR_UserName,Patient_UserName,Clinic_ID)
+Values (@Appointment_ID,@DR_UserName,@Patient_UserName,@Clinic_ID)
+END
+GO
+CREATE PROCEDURE [dbo].[PastAppointments] @Patient_UserName varchar(50)
+AS
+BEGIN
+Select Date_Time, DR_UserName, Comments
+from Appointment
+where Patient_UserName=@Patient_UserName
+END
+GO
+
+CREATE PROCEDURE [dbo].[GetDoctorsthroughSpeciality] @Specialization VARCHAR (20)
+AS
+BEGIN
+select DName, Fees, DUser_Name
+
+from Doctor
+where Specialization=@Specialization
+END
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[NewPastAppointments]@Patient_UserName VARCHAR(50)
+AS
+BEGIN
+select Appointment.Appointment_ID, DR_UserName AS DOCTOR, Date_Time,Comments,Medicine_Name,Diangnosis_Name
+
+from Appointment,Patient_Diagnosis,Patient_Medicine
+
+where Appointment.Appointment_ID=Patient_Diagnosis.Appointment_ID
+AND  Appointment.Appointment_ID=Patient_Medicine.Appointment_ID
+AND Patient_UserName=@Patient_UserName
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[UpcomingAppointments]@Patient_UserName VARCHAR(50)
+AS
+BEGIN
+select Appointment_ID ,Date_Time as Date,DR_UserName AS DOCTOR
+
+from Appointment
+
+where Comments is null AND Patient_UserName=@Patient_UserName 
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[Delete_appointment] 
+@appointment_id int,
+@Patient_name Varchar(50)
+AS
+BEGIN
+UPDATE Free_Slots
+SET Registered='No'
+WHERE Free_Slots.Appointment_ID=@appointment_id;
+
+DELETE Appointment
+WHERE Appointment.Appointment_ID=@appointment_id AND Appointment.Patient_UserName=@Patient_name;
+
+END
+GO
+
+
+CREATE PROCEDURE [dbo].[Delete_appointment] 
+@appointment_id int
+
+AS
+BEGIN
+UPDATE Free_Slots
+SET Registered='No'
+WHERE Free_Slots.Appointment_ID=@appointment_id
+
+DELETE Appointment
+WHERE Appointment.Appointment_ID=@appointment_id 
+
+Delete Patient_Diagnosis
+where Patient_Diagnosis.Appointment_ID=@appointment_id 
+
+Delete Patient_Symptoms
+where Patient_Symptoms.Appointment_ID=@appointment_id 
+
+Delete Patient_Medicine 
+where  Patient_Medicine.Appointment_ID=@appointment_id 
+
+
+
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[UpcomingAppointments]@Patient_UserName VARCHAR(50)
+AS
+BEGIN
+select DR_UserName AS DOCTOR,day,Start_time,End_time,Free_Slots.Appointment_ID
+
+from Free_Slots,Appointment
+
+where  Patient_UserName=@Patient_UserName AND comments is null AND Free_Slots.Appointment_ID=Appointment.Appointment_ID
+
+
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[UpcomingAppointments]
+@Patient_UserName VARCHAR(50)
+AS
+BEGIN
+select DR_UserName AS DOCTOR,day,Start_time,End_time,Free_Slots.Appointment_ID
+
+from Free_Slots,Appointment
+
+where  Patient_UserName=@Patient_UserName AND Comments='' AND Free_Slots.Appointment_ID=Appointment.Appointment_ID
+
+END
+GO
